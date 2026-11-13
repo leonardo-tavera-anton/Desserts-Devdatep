@@ -30,8 +30,8 @@
 
 ## Informacion 
 
-1. Tienda virtual de postres inspirada en Frontend Mentor, desarrollada con React, Vite, TypeScript y Tailwind CSS.
-2. La interfaz del Nivel 1 importa su lista de productos desde src/data/data.json. Intencionalmente no realiza peticiones a la API; la API local está disponible para los niveles posteriores del desafio.
+- Tienda virtual de postres inspirada en Frontend Mentor, desarrollada con React, Vite, TypeScript y Tailwind CSS.
+- La interfaz del Nivel 1 importa su lista de productos desde src/data/data.json. Intencionalmente no realiza peticiones a la API; la API local está disponible para los niveles posteriores del desafio.
 
 ## Funcionalidades del nivel 1
 
@@ -44,14 +44,14 @@
 
 ## Estructura de proyecto
 
-- *src/components:* Encabezado (Header), tarjeta de producto, selector de cantidad, panel lateral del carrito y modal de confirmacion.
-- *src/data/data.json:* Datos locales de productos y el recurso para JSON Server.
-- *public/assets:* Imagenes y archivos de fuentes servidos por Vite y copiados a las compilaciones de producción.
+- **src/components:** Encabezado (Header), tarjeta de producto, selector de cantidad, panel lateral del carrito y modal de confirmacion.
+- **src/data/data.json:** Datos locales de productos y el recurso para JSON Server.
+- **public/assets:** Imagenes y archivos de fuentes servidos por Vite y copiados a las compilaciones de producción.
 
 ## Comandos
 
-- *npm run dev:* inicia Vite.
-- *npm run api:* inicia JSON Server en el puerto 3000.
-- *npm run build:* verifica los tipos y compila la aplicación para producción.
-- *npm run preview:* previsualiza la compilación de producción.
-- *npm run lint:* ejecuta ESLint.
+- **npm run dev:** inicia Vite.
+- **npm run api:** inicia JSON Server en el puerto 3000.
+- **npm run build:** verifica los tipos y compila la aplicación para producción.
+- **npm run preview:** previsualiza la compilación de producción.
+- **npm run lint:** ejecuta ESLint.
