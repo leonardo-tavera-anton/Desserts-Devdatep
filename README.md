@@ -1,23 +1,18 @@
 # REQUERIMIENTOS PARA EL PROYECTO
-
 * Base de descarga https://www.frontendmentor.io/challenges/product-list-with-cart-5MmqLVAp_d
 
 ## Dependencias al momento de crear el proyecto
-npm 11.20.0
-node v26.13.0
-python 3.13.17
-vite v8.3.8
+* npm 11.20.0
+* node v26.13.0
+* python 3.13.17
+* vite v8.3.8
 
-## instalar carpeta fuente del proyecto_
+## instalar dentro de la raiz del proyecto
 * npm create vite@latest . -- --template react-ts
-
-- un linter es el "corrector ortográfico" automático de código para evitar errores y malas prácticas, y ESLint es el programa q cumple esa función en React y TypeScript por eso me ayudara a futuro
-
-## instalar tailwindcss dentro del proyecto_
 * npm install tailwindcss @tailwindcss/vite
 
 - tailwind es un framework de CSS que usa clases utilitarias que facilita construir interfaces optimas sin CSS tradicional
-
+- linter es el "corrector ortográfico" automático de código para evitar errores y malas prácticas, y ESLint es el programa q cumple esa función en React y TypeScript por eso me ayudara a futuro
 
 # PARA INICIAR LOCALMENTE FRONTEND Y BACKEND
 
@@ -30,11 +25,7 @@ vite v8.3.8
  2. cd data
  3. npm install -D json-server
  4. npx json-server data.json --port 3000
-
 - si da error cambiar de puerto 
-
-- 13/11/2026 use useState para hacer el carrito funcional esto es algo extra que no pedian pero solo agregue para ver funcionalidad
-
 
 
 
