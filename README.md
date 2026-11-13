@@ -28,9 +28,6 @@
  4. npx json-server data.json --port 3000
 - si da error cambiar de puerto 
 
-
-
-
 # Desserts
 
 Frontend Mentor inspired dessert storefront built with React, Vite, TypeScript, and Tailwind CSS.
