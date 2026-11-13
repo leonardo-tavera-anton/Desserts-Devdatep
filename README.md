@@ -1,75 +1,40 @@
-# React + TypeScript + Vite
+# Desserts
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend Mentor inspired dessert storefront built with React, Vite, TypeScript, and Tailwind CSS.
 
-Currently, two official plugins are available:
+## Requirements
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Node.js and npm
+- Install dependencies with `npm install`
 
-## React Compiler
+## Run locally
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Open two terminals in the project folder:
 
-## Expanding the ESLint configuration
+1. Start the frontend with `npm run dev` (Vite serves `http://localhost:5173`).
+2. Start the local JSON Server with `npm run api` (API serves `http://localhost:3000/products`).
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+The Level 1 interface imports its product list from `src/data/data.json`. It intentionally does not make API requests; the local API is available for the later challenge levels.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Level 1 features
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- Responsive product list with local product data.
+- Add and remove products, adjust quantities, and calculate the order total.
+- Empty cart panel beside the products on desktop and below them on mobile.
+- Order confirmation modal with the selected products and total.
+- Tailwind CSS styling and Red Hat Text typography.
+- No Axios, TanStack Query, or React Router in this level.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Project structure
 
-```
+- `src/components`: Header, product card, quantity stepper, cart drawer, and confirmation modal.
+- `src/data/data.json`: local product data and the JSON Server resource.
+- `public/assets`: images and font files served by Vite and copied into production builds.
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+## Scripts
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
+- `npm run dev`: start Vite.
+- `npm run api`: start JSON Server on port 3000.
+- `npm run build`: type-check and build the production app.
+- `npm run preview`: preview the production build.
+- `npm run lint`: run ESLint.
