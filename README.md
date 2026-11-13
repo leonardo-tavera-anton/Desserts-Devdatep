@@ -6,6 +6,7 @@
 * node v26.13.0
 * python 3.13.17
 * vite v8.3.8
+* tailwindcss 4.3.5
 
 ## instalar dentro de la raiz del proyecto
 * npm create vite@latest . -- --template react-ts
