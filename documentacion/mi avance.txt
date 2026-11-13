@@ -40,3 +40,5 @@ npx json-server data.json --port 3000
 * use useState para hacer el carrito funcional esto es algo
 extra que no pedian pero solo agregue para ver funcionalidad
 
+hola probando gitmojis
+
