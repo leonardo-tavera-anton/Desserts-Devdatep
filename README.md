@@ -1,4 +1,7 @@
-# REQUERIMIENTOS PARA EL PROYECTO
+# NIVEL 1
+git switch -c nivel-1
+
+## REQUERIMIENTOS 
 * Base de descarga https://www.frontendmentor.io/challenges/product-list-with-cart-5MmqLVAp_d
 
 ## Dependencias al momento de crear el proyecto
@@ -15,18 +18,28 @@
 - tailwind es un framework de CSS que usa clases utilitarias que facilita construir interfaces optimas sin CSS tradicional
 - linter es el "corrector ortográfico" automático de código para evitar errores y malas prácticas, y ESLint es el programa q cumple esa función en React y TypeScript por eso me ayudara a futuro
 
-# PARA INICIAR LOCALMENTE FRONTEND Y BACKEND
+# PARA INICIAR LOCALMENTE
 
 ## primera terminal para correr front
 :5173 vite usa defecto (no cambiar o utilizar puerto)
 * npm run dev
 
-## segundo terminal para correr base de datos local
+## segunda terminal para correr back
  1. cd src
  2. cd data
  3. npm install -D json-server
  4. npx json-server data.json --port 3000
 - si da error cambiar de puerto 
+
+# NIVEL 2
+git switch -c nivel-2
+
+## Dependencias para este parte
+* axios@1.21.1
+
+## Instalar dentro del proyecto
+npm.cmd install axios @tanstack/react-query react-router-dom
+npm.cmd run api
 
 
 
