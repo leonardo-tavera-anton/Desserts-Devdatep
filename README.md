@@ -30,8 +30,8 @@
 
 ## Informacion 
 
--Tienda virtual de postres inspirada en Frontend Mentor, desarrollada con React, Vite, TypeScript y Tailwind CSS.
--La interfaz del Nivel 1 importa su lista de productos desde src/data/data.json. Intencionalmente no realiza peticiones a la API; la API local está disponible para los niveles posteriores del desafio.
+1. Tienda virtual de postres inspirada en Frontend Mentor, desarrollada con React, Vite, TypeScript y Tailwind CSS.
+2. La interfaz del Nivel 1 importa su lista de productos desde src/data/data.json. Intencionalmente no realiza peticiones a la API; la API local está disponible para los niveles posteriores del desafio.
 
 ## Funcionalidades del nivel 1
 
