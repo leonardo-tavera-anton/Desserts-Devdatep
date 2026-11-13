@@ -1,0 +1,184 @@
+Prueba Técnica Frontend — Desserts
+Descripción general
+Construir una SPA de una tienda de postres llamada Desserts, utilizando React, Vite y TypeScript. La aplicación consume una API local creada con json-server y se desarrolla progresivamente en tres niveles.
+Stack obligatorio
+- React + Vite + TypeScript
+- Tailwind CSS
+- React Router
+- TanStack Query + Axios
+- React Hook Form + Zod
+- Zustand
+- json-server
+- Git y GitHub
+La API debe ejecutarse localmente en:
+- Frontend: http://localhost:5173
+- API: http://localhost:3000
+Nivel 1 — Básico
+Objetivo
+Construir la interfaz visual de la tienda sin consumir APIs ni implementar lógica compleja.
+Requerimientos
+- Reproducir el diseño de referencia de Frontend Mentor: Product List with Cart.
+- Utilizar productos desde un array local.
+- Mostrar:
+- Imagen
+- Nombre
+- Categoría
+- Precio
+- Crear los componentes:
+- Header
+- ProductCard
+- QuantityStepper
+- CartDrawer
+- ConfirmOrderModal
+- Implementar:
+- Diseño responsive
+- Una columna en mobile
+- Tres columnas en desktop
+- Estados hover
+- Drawer del carrito vacío
+- Modal de confirmación visual
+- Usar Tailwind CSS.
+- No utilizar fetch, Axios, React Query ni React Router.
+- Se permite useState únicamente para abrir y cerrar el drawer o modal.
+Evaluación
+- Fidelidad al diseño
+- Responsive
+- Calidad visual
+- Organización de componentes
+- Uso correcto de Git y commits con gitmojis
+Nivel 2 — Intermedio
+Objetivo
+Reemplazar los datos estáticos por datos reales de la API local y agregar navegación.
+Requerimientos
+- Mantener todo lo realizado en el Nivel 1.
+- Consumir GET /products utilizando:
+- Axios
+- TanStack Query
+- Query key ['products']
+- Implementar:
+- Skeletons durante la carga
+- Delay artificial aproximado de 1.2 segundos
+- Búsqueda por nombre
+- Filtro por categoría
+- Estados de loading
+- Estados de error
+- Estado vacío cuando no hay resultados
+- Agregar navegación con React Router:
+- /
+- /producto/:id
+- Crear una vista de detalle del producto.
+- Mostrar un mensaje 404 para productos inexistentes.
+- Realizar la búsqueda y el filtrado contra la API, no solamente en memoria.
+Evaluación
+- Correcto consumo de datos
+- Uso adecuado de TanStack Query
+- Skeletons visibles y funcionales
+- Búsqueda y filtros
+- Manejo de estados de UI
+- Navegación y detalle
+- Calidad del código
+Nivel 3 — Avanzado
+Objetivo
+Convertir la aplicación en una tienda completa con carrito funcional, CRUD de productos y arquitectura escalable.
+Requerimientos
+Mantener todo lo desarrollado en los niveles anteriores y agregar:
+Carrito de compras
+Implementar el carrito utilizando Zustand:
+- Agregar productos
+- Quitar productos
+- Aumentar cantidades
+- Disminuir cantidades
+- Calcular el total
+- Persistir el carrito en localStorage
+- Mostrar el carrito mediante un drawer
+- Mostrar el modal real de confirmación de orden
+- Vaciar el carrito después de confirmar la orden
+CRUD de productos
+Implementar las operaciones:
+- Crear producto
+- Listar productos
+- Ver detalle
+- Editar producto
+- Eliminar producto
+Las mutaciones deben utilizar Axios y TanStack Query:
+- POST
+- PUT
+- DELETE
+- invalidateQueries después de cada operación exitosa
+Formularios
+- Utilizar React Hook Form.
+- Validar con Zod.
+- Reutilizar el mismo formulario para crear y editar.
+- Utilizar defaultValues para la edición.
+- Confirmar la eliminación mediante un modal.
+Paginación
+Agregar paginación en el listado:
+- _page
+- _per_page=8
+- Botones para cambiar de página
+- Mostrar la página actual y el total de páginas
+Categorías
+Relacionar productos con categorías:
+- Consumir /categories.
+- Mostrar el nombre de la categoría en cada producto.
+- Utilizar badges o etiquetas visuales.
+Errores y notificaciones
+Implementar:
+- Toast de creación exitosa
+- Toast de edición exitosa
+- Toast de eliminación exitosa
+- Toast de errores
+- Estados de error amigables
+- Confirmaciones antes de eliminar
+Arquitectura
+Organizar el código por funcionalidades:
+- Componentes
+- Pages
+- Hooks
+- Services
+- Schemas
+- Stores
+- Interfaces
+- Rutas
+Separar los hooks de TanStack Query:
+- useProductsQueries
+- useProductsMutations
+Documentación y deploy
+Crear un README.md con:
+- Instalación
+- Scripts disponibles
+- Cómo ejecutar el proyecto
+- Arquitectura
+- Decisiones técnicas
+- Funcionamiento de la API
+Realizar un deploy en Netlify, Vercel u otra plataforma.
+Las animaciones son opcionales.
+Evaluación
+- CRUD completo y persistente
+- Carrito persistente
+- Mutations correctamente implementadas
+- Invalidación de caché
+- Formularios y validaciones
+- Toasts y manejo de errores
+- Paginación
+- Arquitectura
+- README
+- Deploy funcional
+Reglas generales de entrega
+- Crear una rama por nivel:
+- nivel-1
+- nivel-2
+- nivel-3
+- No eliminar las ramas anteriores.
+- Subir cada rama al repositorio remoto.
+- Usar commits con gitmojis:
+- ✨ feat
+- 🐛 fix
+- 💄 style
+- ♻️ refactor
+- 📝 docs
+- 🚀 deploy
+- 🧪 test
+- ⚡ perf
+- Duración mínima sugerida: 5 días.
+- No consumir APIs online; utilizar únicamente el json-server local
