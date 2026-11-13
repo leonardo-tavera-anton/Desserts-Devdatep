@@ -1,43 +1,40 @@
 # REQUERIMIENTOS PARA EL PROYECTO
 
-Base de descarga https://www.frontendmentor.io/challenges/product-list-with-cart-5MmqLVAp_d
-_mi instalacion actual al momento de crear el proyecto_
+* Base de descarga https://www.frontendmentor.io/challenges/product-list-with-cart-5MmqLVAp_d
+
+## Dependencias al momento de crear el proyecto
 npm 11.20.0
 node v26.13.0
 python 3.13.17
+vite v8.3.8
 
-_instalar carpeta fuente del proyecto_
-npm create vite@latest . -- --template react-ts
+## instalar carpeta fuente del proyecto_
+* npm create vite@latest . -- --template react-ts
 
-* un linter es el "corrector ortográfico" automático de código para evitar
-errores y malas prácticas, y ESLint es el programa q cumple esa función en
-React y TypeScript por eso me ayudara a futuro
+- un linter es el "corrector ortográfico" automático de código para evitar errores y malas prácticas, y ESLint es el programa q cumple esa función en React y TypeScript por eso me ayudara a futuro
 
-VITE v8.3.8  ready in 631 ms
-http://localhost:5173/
+## instalar tailwindcss dentro del proyecto_
+* npm install tailwindcss @tailwindcss/vite
 
-
-_instalar tailwindcss dentro del proyecto_
-npm install tailwindcss @tailwindcss/vite
-
-* tailwind es un framework de CSS que usa clases utilitarias que facilita
-construir interfaces optimas sin CSS tradicional
+- tailwind es un framework de CSS que usa clases utilitarias que facilita construir interfaces optimas sin CSS tradicional
 
 
-PARA INICIAR LOCALMENTE FRONTEND Y BACKEND
+# PARA INICIAR LOCALMENTE FRONTEND Y BACKEND
 
-_primera terminal para correr front_
-:5173 (vite usa pr defecto)
-npm run dev
+## primera terminal para correr front
+:5173 vite usa defecto (no cambiar o utilizar puerto)
+* npm run dev
 
-_segundo terminal para correr base de datos local_
-cd src, cd data
-npm install -D json-server
-:3000 (si da error pueden cambiar de puerto)
-npx json-server data.json --port 3000
+## segundo terminal para correr base de datos local
+ 1. cd src
+ 2. cd data
+ 3. npm install -D json-server
+ 4. npx json-server data.json --port 3000
 
-* use useState para hacer el carrito funcional esto es algo
-extra que no pedian pero solo agregue para ver funcionalidad
+- si da error cambiar de puerto 
+
+- 13/11/2026 use useState para hacer el carrito funcional esto es algo extra que no pedian pero solo agregue para ver funcionalidad
+
 
 
 
