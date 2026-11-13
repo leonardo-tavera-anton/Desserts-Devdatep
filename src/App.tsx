@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { Header } from './components/Header';
-import { ProductCard, type CartItem, type Product } from './components/ProductCard';
+import { ProductCard } from './components/ProductCard';
 import { CartDrawer } from './components/CartDrawer';
 import { ConfirmOrderModal } from './components/ConfirmOrderModal';
+import type { CartItem, Product } from './types/product';
 import data from './data/data.json';
 
 export function App() {

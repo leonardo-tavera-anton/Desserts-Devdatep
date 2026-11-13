@@ -1,21 +1,5 @@
 import { QuantityStepper } from './QuantityStepper';
-
-export interface Product {
-  image: {
-    thumbnail: string;
-    mobile: string;
-    tablet: string;
-    desktop: string;
-  };
-  name: string;
-  category: string;
-  price: number;
-}
-
-export interface CartItem {
-  product: Product;
-  quantity: number;
-}
+import type { Product } from '../types/product';
 
 interface ProductCardProps {
   product: Product;

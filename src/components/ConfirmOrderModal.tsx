@@ -1,4 +1,4 @@
-import type { CartItem } from './ProductCard';
+import type { CartItem } from '../types/product';
 
 interface ConfirmOrderModalProps {
   isOpen: boolean;
