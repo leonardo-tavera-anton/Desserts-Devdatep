@@ -42,3 +42,7 @@ extra que no pedian pero solo agregue para ver funcionalidad
 
 hola probando gitmojis
 
+NIVEL2
+git switch -c nivel-2
+npm.cmd install axios @tanstack/react-query react-router-dom
+npm.cmd run api
