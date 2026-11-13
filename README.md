@@ -22,6 +22,7 @@
 * npm run dev
 
 ## Segundo terminal para correr backend
+:3000 puerto que indican utilizar
  1. cd src
  2. cd data
  3. npm install -D json-server
