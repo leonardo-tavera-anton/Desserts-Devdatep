@@ -32,10 +32,10 @@ npm run dev
 
 segundo terminal
 instalacion previa a levantar archivo json d forma local
-npm install -D json-server(terminal aparte)
-:3000
+npm install -D json-server
 
 cd src, cd data
+:3000
 npx json-server data.json --port 3000
 
 * use useState para hacer el carrito funcional esto es algo extra solo para ver funcionalidad
