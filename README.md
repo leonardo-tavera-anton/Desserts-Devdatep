@@ -8,7 +8,7 @@
 * vite v8.3.8
 * tailwindcss 4.3.5
 
-## instalar dentro de la raiz del proyecto
+## Instalar dentro de la raiz del proyecto
 * npm create vite@latest . -- --template react-ts
 * npm install tailwindcss @tailwindcss/vite
 
@@ -17,54 +17,41 @@
 
 # PARA INICIAR LOCALMENTE FRONTEND Y BACKEND
 
-## primera terminal para correr front
-:5173 vite usa defecto (no cambiar o utilizar puerto)
+## Primera terminal para correr frontend
+:5173 vite usa defecto (procurar no utilizar este puerto)
 * npm run dev
 
-## segundo terminal para correr base de datos local
+## Segundo terminal para correr backend
  1. cd src
  2. cd data
  3. npm install -D json-server
  4. npx json-server data.json --port 3000
-- si da error cambiar de puerto 
+ 5. npm run api (en caso no funcione npx)
 
-# Desserts
+## Informacion 
 
-Frontend Mentor inspired dessert storefront built with React, Vite, TypeScript, and Tailwind CSS.
+-Tienda virtual de postres inspirada en Frontend Mentor, desarrollada con React, Vite, TypeScript y Tailwind CSS.
+-La interfaz del Nivel 1 importa su lista de productos desde src/data/data.json. Intencionalmente no realiza peticiones a la API; la API local está disponible para los niveles posteriores del desafio.
 
-## Requirements
+## Funcionalidades del nivel 1
 
-- Node.js and npm
-- Install dependencies with `npm install`
+- Lista de productos responsiva con datos de productos locales.
+- Agregar y eliminar productos, ajustar cantidades y calcular el total del pedido.
+- Panel de carrito vacio al lado de los productos en computadoras de escritorio y debajo de ellos en dispositivos moviles.
+- Modal de confirmacion de pedido con los productos seleccionados y el total.
+- Estilos con Tailwind CSS y tipografía Red Hat Text.
+- Sin Axios, TanStack Query ni React Router en este nivel.
 
-## Run locally
+## Estructura de proyecto
 
-Open two terminals in the project folder:
+- *src/components:* Encabezado (Header), tarjeta de producto, selector de cantidad, panel lateral del carrito y modal de confirmacion.
+- *src/data/data.json:* Datos locales de productos y el recurso para JSON Server.
+- *public/assets:* Imagenes y archivos de fuentes servidos por Vite y copiados a las compilaciones de producción.
 
-1. Start the frontend with `npm run dev` (Vite serves `http://localhost:5173`).
-2. Start the local JSON Server with `npm run api` (API serves `http://localhost:3000/products`).
+## Comandos
 
-The Level 1 interface imports its product list from `src/data/data.json`. It intentionally does not make API requests; the local API is available for the later challenge levels.
-
-## Level 1 features
-
-- Responsive product list with local product data.
-- Add and remove products, adjust quantities, and calculate the order total.
-- Empty cart panel beside the products on desktop and below them on mobile.
-- Order confirmation modal with the selected products and total.
-- Tailwind CSS styling and Red Hat Text typography.
-- No Axios, TanStack Query, or React Router in this level.
-
-## Project structure
-
-- `src/components`: Header, product card, quantity stepper, cart drawer, and confirmation modal.
-- `src/data/data.json`: local product data and the JSON Server resource.
-- `public/assets`: images and font files served by Vite and copied into production builds.
-
-## Scripts
-
-- `npm run dev`: start Vite.
-- `npm run api`: start JSON Server on port 3000.
-- `npm run build`: type-check and build the production app.
-- `npm run preview`: preview the production build.
-- `npm run lint`: run ESLint.
+- *npm run dev:* inicia Vite.
+- *npm run api:* inicia JSON Server en el puerto 3000.
+- *npm run build:* verifica los tipos y compila la aplicación para producción.
+- *npm run preview:* previsualiza la compilación de producción.
+- *npm run lint:* ejecuta ESLint.
