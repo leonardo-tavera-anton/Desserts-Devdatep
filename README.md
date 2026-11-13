@@ -1,3 +1,47 @@
+# REQUERIMIENTOS PARA EL PROYECTO
+
+Base de descarga https://www.frontendmentor.io/challenges/product-list-with-cart-5MmqLVAp_d
+_mi instalacion actual al momento de crear el proyecto_
+npm 11.20.0
+node v26.13.0
+python 3.13.17
+
+_instalar carpeta fuente del proyecto_
+npm create vite@latest . -- --template react-ts
+
+* un linter es el "corrector ortográfico" automático de código para evitar
+errores y malas prácticas, y ESLint es el programa q cumple esa función en
+React y TypeScript por eso me ayudara a futuro
+
+VITE v8.3.8  ready in 631 ms
+http://localhost:5173/
+
+
+_instalar tailwindcss dentro del proyecto_
+npm install tailwindcss @tailwindcss/vite
+
+* tailwind es un framework de CSS que usa clases utilitarias que facilita
+construir interfaces optimas sin CSS tradicional
+
+
+PARA INICIAR LOCALMENTE FRONTEND Y BACKEND
+
+_primera terminal para correr front_
+:5173 (vite usa pr defecto)
+npm run dev
+
+_segundo terminal para correr base de datos local_
+cd src, cd data
+npm install -D json-server
+:3000 (si da error pueden cambiar de puerto)
+npx json-server data.json --port 3000
+
+* use useState para hacer el carrito funcional esto es algo
+extra que no pedian pero solo agregue para ver funcionalidad
+
+
+
+
 # Desserts
 
 Frontend Mentor inspired dessert storefront built with React, Vite, TypeScript, and Tailwind CSS.
