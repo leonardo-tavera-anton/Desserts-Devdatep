@@ -46,3 +46,12 @@ NIVEL2
 git switch -c nivel-2
 npm.cmd install axios @tanstack/react-query react-router-dom
 npm.cmd run api
+
+usar tanstack para cambiar el origen de productos para q main
+sirva como punto de montaje, declaramos y lo envuelvo el app
+
+creo la carpeta para los servicios
+src/service donde una funcion solicite get de los productos(para q sea independiente sin mezclar peticiones con el diseño app)
+
+types para interfaces y tipos
+services paraguardar funciones q se comuniquen con la api

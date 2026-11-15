@@ -5,6 +5,7 @@ export interface Product {
     tablet: string;
     desktop: string;
   };
+  id: string;
   name: string;
   category: string;
   price: number;
