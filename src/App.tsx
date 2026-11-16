@@ -8,7 +8,7 @@ export function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/producto/:id" element={<ProductDetailPage />} />
-      <Route path="*" element={<NotFoundPage />} /> //para inexistentes
+      <Route path="*" element={<NotFoundPage />} /> //caso de rutas inexistentes
     </Routes>
   );
 }

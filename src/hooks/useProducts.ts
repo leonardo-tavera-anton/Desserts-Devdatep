@@ -6,7 +6,7 @@ export const useProducts = (search = '', category = '') => {
     queryKey: ['products', { search, category }], //metodo d busqueda
     
     queryFn: async () => {
-        await new Promise((resolve) => setTimeout(resolve, 1200)); //declaracion primero antes d funcion para evitar errores
+        await new Promise((resolve) => setTimeout(resolve, 1200)); //1.2s delay y declaracion previa a busqueda
         const productList = await productService.getProducts(search, category);
         return productList;
         
