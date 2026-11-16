@@ -1,18 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
-import { productService } from "../services/productService";
+import { useQuery } from '@tanstack/react-query';
+import { productQueries } from '../queries/productQueries';
 
-export const useProducts = (search = '', category = '') => {
-  return useQuery({
-    queryKey: ['products', { search, category }], //metodo d busqueda
-    
-    queryFn: async () => {
-        await new Promise((resolve) => setTimeout(resolve, 1200)); //1.2s delay y declaracion previa a busqueda
-        const productList = await productService.getProducts(search, category);
-        return productList;
-        
-    },
-    
-    staleTime: 1000 * 60 * 5, // 5min
-    gcTime: 1000 * 60 * 10, // 10min cache a gc pq cambio por una version
-  });
+// Hook que conecta los componentes con la consulta de la lista.
+export function useProducts(search = '', category = '') {
+  return useQuery(productQueries.list(search, category));
 }

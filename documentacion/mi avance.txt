@@ -55,7 +55,7 @@ src/service donde una funcion solicite get de los productos(para q sea independi
 
 types para interfaces y tipos
 services paraguardar funciones q se comuniquen con la api
-prmero declaro prodcuts.ts este servida  como puentre en el proyecto y el api(tanstack utilizara esta funcion)
+prmero declaro prodcuts.ts este servira como puentee en el proyecto y el api(tanstack utilizara esta funcion)
 
 services/api.ts
 declaro api.ts en service como fuente directa y general para centralizar y reutilizar en todos los servicios
@@ -75,3 +75,16 @@ segun categoria y valores similares necesitamos un filtrado
 ejemplo para gato /products?name:contains=gato&category=gatos
 name:containsy category implementados
 
+useProducts.ts*importante
+al momento d no realizar filtro se mantiene ['products', { search: '', category: '' }]
+buscando por nombre
+..search: 'tiramisu'
+filtrando por categoria
+..category: 'tiramisu'
+
+mejorar conexion entre hooks y services para el api
+tanstackpara
+
+_nuevo flujo_
+para q el homepage no este cargado lo voy a dividir entre usecartstore un hook para manejar la data 
+-- esto reduce la carga del homepage-- 

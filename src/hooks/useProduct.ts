@@ -1,10 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
-import { productService } from '../services/productService';
+import { productQueries } from '../queries/productQueries';
 
+// Hook que conecta los componentes con la consulta del detalle.
 export function useProduct(id: string) {
-  return useQuery({
-    queryKey: ['product', id],
-    queryFn: () => productService.getProductById(id),
-    enabled: Boolean(id),
-  });
+  return useQuery(productQueries.detail(id));
 }
