@@ -88,3 +88,24 @@ tanstackpara
 _nuevo flujo_
 para q el homepage no este cargado lo voy a dividir entre usecartstore un hook para manejar la data 
 -- esto reduce la carga del homepage-- 
+delegando responsabilidaddes para mejorar la calidad del codigo, primero creare util ahi bajare
+poco la carga del home respecto al nivel 1 ahora requiere q todo sea mas delegado en varios archivos
+
+version de json actual al guiarme d un video utilizaba like_ como metodo de busqueda algo obsoleto para
+esta version de json
+productService.ts modificado totalmente ya no maneja like_igual forma lo pasa a lowercase siempre
+http://localhost:3000/products?category=Waffle esta funcionando
+http://localhost:3000/products?name=Waffle with Berries esta funcionando
+
+se corrigio inconveniente con http://localhost:3000/products?name_like=Waffle producto like
+
+front lee el Input d usuario
+useProducts()
+productQueries
+productService
+GET/products?name_like=waffle
+[]
+UI vacía
+
+este era el sistema ahora con products.filter reconoce y busca si un texto contiene otro
+API--Todos los productos--filter()--includes()--Productos encontrados --mostrarse enUI

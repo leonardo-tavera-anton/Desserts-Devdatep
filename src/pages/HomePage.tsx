@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { useProducts } from '../hooks/useProducts';
+import { getCartData } from '../utils/cartCalculations';
 import { ProductSkeleton } from '../components/ProductSkeleton';
 import { Header } from '../components/Header';
 import { ProductCard } from '../components/ProductCard';
 import { CartDrawer } from '../components/CartDrawer';
 import { ConfirmOrderModal } from '../components/ConfirmOrderModal';
-import type { CartItem } from '../types/product';
+
 
 export function HomePage() {
   const [quantities, setQuantities] = useState<Record<string, number>>({});
@@ -14,48 +15,25 @@ export function HomePage() {
   const [category, setCategory] = useState('');
   const { data: products = [], isLoading, isError, error } = useProducts(search, category);
   const { data: allProducts = [] } = useProducts();
-  const categories = Array.from(new Set(allProducts.map((product) => product.category)));
+  const categories = Array.from(new Set(allProducts.map((product) => product.category)));//extraer categorias unicas
 
-  const cartItems: CartItem[] = allProducts.flatMap((product) => {
-    const quantity = quantities[product.name] ?? 0;
-    return quantity > 0 ? [{ product, quantity }] : [];
+  const { cartItems, totalQuantity, orderTotal } = getCartData(allProducts, quantities);  //calculos del carrito
+  const updateQuantity = (name: string, delta: number) => {    //acciones del carrito simplificadas
+
+    setQuantities((prev) => {
+      const next = { ...prev };
+      const newQty = (next[name] ?? 0) + delta;
+      if (newQty <= 0) delete next[name];
+      else next[name] = newQty;
+      return next;
+    });
+  };
+
+  const removeProduct = (name: string) => setQuantities((prev) => {
+    const next = { ...prev };
+    delete next[name];
+    return next;
   });
-
-  const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
-  const orderTotal = cartItems.reduce(
-    (total, item) => total + item.product.price * item.quantity,
-    0,
-  );
-
-  const increaseQuantity = (productName: string) => {
-    setQuantities((current) => ({
-      ...current,
-      [productName]: (current[productName] ?? 0) + 1,
-    }));
-  };
-
-  const decreaseQuantity = (productName: string) => {
-    setQuantities((current) => {
-      const next = { ...current };
-      const quantity = next[productName] ?? 0;
-
-      if (quantity <= 1) {
-        delete next[productName];
-      } else {
-        next[productName] = quantity - 1;
-      }
-
-      return next;
-    });
-  };
-
-  const removeProduct = (productName: string) => {
-    setQuantities((current) => {
-      const next = { ...current };
-      delete next[productName];
-      return next;
-    });
-  };
 
   const startNewOrder = () => {
     setQuantities({});
@@ -113,9 +91,9 @@ export function HomePage() {
                     key={product.id}
                     product={product}
                     quantity={quantities[product.name] ?? 0}
-                    onAdd={() => increaseQuantity(product.name)}
-                    onIncrement={() => increaseQuantity(product.name)}
-                    onDecrement={() => decreaseQuantity(product.name)}
+                    onAdd={() => updateQuantity(product.name, 1)}
+                    onIncrement={() => updateQuantity(product.name, 1)}
+                    onDecrement={() => updateQuantity(product.name, -1)}
                   />
                 ))
               )}

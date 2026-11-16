@@ -15,14 +15,33 @@ class ProductService {
     return response.data;
   }
 
-  async getProducts(search = '', category = ''): Promise<Product[]> {
+  async getProducts(
+    search = '',
+    category = ''
+  ): Promise<Product[]> {
     const params: Record<string, string> = {};
 
-    if (search.trim()) params['name:contains'] = search.trim();
-    if (category) params.category = category;
+    //mantiene filtro por categoria en la API
+    if (category) {
+      params.category = category;
+    }
+    const response = await this.axiosInstance.get<Product[]>(
+      '/products',
+      { params }
+    );
 
-    const response = await this.axiosInstance.get<Product[]>('/products', { params });
-    return response.data;
+    let products = response.data;
+
+    //busqueda por nombre
+    if (search.trim()) {
+      products = products.filter((product) =>
+        product.name
+          .toLowerCase()
+          .includes(search.trim().toLowerCase())
+      );
+    }
+
+    return products;
   }
 }
 
