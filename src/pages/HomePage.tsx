@@ -14,7 +14,7 @@ export function HomePage() {
   const [category, setCategory] = useState('');
   const { data: products = [], isLoading, isError, error } = useProducts(search, category);
   const { data: allProducts = [] } = useProducts();
-  const categories = Array.from(new Set(allProducts.map((product) => product.category)));
+  const categories = Array.from(new Set(allProducts.map((product) => product.category))); //conectado a data.json
 
   const cartItems: CartItem[] = allProducts.flatMap((product) => {
     const quantity = quantities[product.name] ?? 0;
@@ -62,7 +62,7 @@ export function HomePage() {
     setIsConfirmationOpen(false);
   };
 
-  return (
+  return ( //buscador
     <main className="min-h-screen bg-rose-50 px-6 pb-8 pt-6 lg:px-0 lg:pb-16 lg:pt-20">
       <div className="mx-auto max-w-[1216px]">
         <Header />
@@ -72,19 +72,19 @@ export function HomePage() {
             <input
               type="search"
               value={search}
-              onChange={(event) => setSearch(event.target.value)}
-              placeholder="Ej. Waffle"
+              onChange={(event) => setSearch(event.target.value)} //nombre
+              placeholder="Ej. Tiramusu"
               className="rounded-lg border border-rose-300 bg-white px-4 py-3 font-normal outline-none focus:border-red-600 focus:ring-2 focus:ring-red-200"
             />
           </label>
           <label className="flex flex-col gap-2 text-sm font-semibold text-rose-900">
-            Filtrar por categor&iacute;a
+            Filtrar por categoria
             <select
               value={category}
-              onChange={(event) => setCategory(event.target.value)}
+              onChange={(event) => setCategory(event.target.value)} //categoria declarada en main
               className="rounded-lg border border-rose-300 bg-white px-4 py-3 outline-none focus:border-red-600 focus:ring-2 focus:ring-red-200"
             >
-              <option value="">Todas las categor&iacute;as</option>
+              <option value="">Todas las categorias</option>
               {categories.map((item) => (
                 <option key={item} value={item}>
                   {item}

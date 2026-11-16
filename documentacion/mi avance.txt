@@ -70,3 +70,8 @@ esto para usar los productos como su mismo nombre en ingles es un entramado todo
 ahora el skeleton de productos unos cuantos de prueba y lo inmporto en app.tsx esta parte si estresa
 declar errores antes del skeleton para eso es necesario al costado del array isloading, declarar iserror error
 
+metodo de busqueda
+segun categoria y valores similares necesitamos un filtrado
+ejemplo para gato /products?name:contains=gato&category=gatos
+name:containsy category implementados
+
