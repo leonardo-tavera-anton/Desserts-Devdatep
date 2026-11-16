@@ -55,3 +55,18 @@ src/service donde una funcion solicite get de los productos(para q sea independi
 
 types para interfaces y tipos
 services paraguardar funciones q se comuniquen con la api
+prmero declaro prodcuts.ts este servida  como puentre en el proyecto y el api(tanstack utilizara esta funcion)
+
+services/api.ts
+declaro api.ts en service como fuente directa y general para centralizar y reutilizar en todos los servicios
+
+importo y declaro exports en products para enviar informacion hacia api.ts 
+
+hooks/useProducts
+para el primer hook, creo un useproducts para importar productSERVICE y un useQuery mediante tanstack
+esto para usar los productos como su mismo nombre en ingles es un entramado todo interconectado pero reutilizable y aun mejor, funcional
+
+/productSkeleton
+ahora el skeleton de productos unos cuantos de prueba y lo inmporto en app.tsx esta parte si estresa
+declar errores antes del skeleton para eso es necesario al costado del array isloading, declarar iserror error
+

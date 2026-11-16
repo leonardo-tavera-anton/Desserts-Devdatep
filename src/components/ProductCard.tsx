@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { QuantityStepper } from './QuantityStepper';
 import type { Product } from '../types/product';
 
@@ -19,19 +20,21 @@ export const ProductCard = ({
   return (
     <article className="flex flex-col gap-2">
       <div className="relative mb-4">
-        <picture>
-          <source media="(min-width: 1024px)" srcSet={product.image.desktop} />
-          <source media="(min-width: 768px)" srcSet={product.image.tablet} />
-          <img
-            src={product.image.mobile}
-            alt={product.name}
-            loading="lazy"
-            decoding="async"
-            className={`h-auto w-full rounded-xl object-cover ${
-              quantity > 0 ? 'border-2 border-red-600' : ''
-            }`}
-          />
-        </picture>
+        <Link to={`/producto/${product.id}`} aria-label={`Ver detalles de ${product.name}`}>
+          <picture>
+            <source media="(min-width: 1024px)" srcSet={product.image.desktop} />
+            <source media="(min-width: 768px)" srcSet={product.image.tablet} />
+            <img
+              src={product.image.mobile}
+              alt={product.name}
+              loading="lazy"
+              decoding="async"
+              className={`h-auto w-full rounded-xl object-cover transition-opacity hover:opacity-90 ${
+                quantity > 0 ? 'border-2 border-red-600' : ''
+              }`}
+            />
+          </picture>
+        </Link>
 
         <div className="absolute -bottom-5 left-1/2 flex w-full -translate-x-1/2 justify-center">
           {quantity === 0 ? (
@@ -57,7 +60,11 @@ export const ProductCard = ({
 
       <div className="mt-6">
         <p className="text-sm text-rose-500">{product.category}</p>
-        <h2 className="text-base font-semibold text-rose-900">{product.name}</h2>
+        <h2 className="text-base font-semibold text-rose-900">
+          <Link to={`/producto/${product.id}`} className="hover:text-red-600">
+            {product.name}
+          </Link>
+        </h2>
         <p className="font-semibold text-red-600">${product.price.toFixed(2)}</p>
       </div>
     </article>
