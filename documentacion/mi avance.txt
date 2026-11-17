@@ -148,5 +148,11 @@ git branch --show-current
 instalamos zustand
 _npm.cmd install zustand
 
-hubo 14 vulnerabilidades 8 moredaras y 6 altas al momento de instalar
-npm.cmd audit
+_hubo 14 vulnerabilidades 8 moredaras y 6 altas al momento de instalar
+npm.cmd audit fix
+11 vulnerabilidades
+
+npm.cmd ls vite @vitejs/plugin-react picomatch
+4 vulnerabilidades
+
+npm.cmd install --save-dev @tailwindcss/vite tailwindcss
