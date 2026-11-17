@@ -11,7 +11,7 @@ class ProductService {
   }
 
   async getProductById(id: string): Promise<Product> {
-    const response = await this.axiosInstance.get<Product>(`/products/${id}`);
+    const response = await this.axiosInstance.get<Product>(`/products/${id}`);//segun su id
     return response.data;
   }
 
@@ -34,8 +34,7 @@ class ProductService {
 
     //busqueda por nombre
     if (search.trim()) {
-      products = products.filter((product) =>
-        product.name
+      products = products.filter((product) => product.name
           .toLowerCase()
           .includes(search.trim().toLowerCase())
       );
