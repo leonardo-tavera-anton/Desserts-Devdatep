@@ -100,12 +100,11 @@ http://localhost:3000/products?name=Waffle with Berries esta funcionando
 se corrigio inconveniente con http://localhost:3000/products?name_like=Waffle producto like
 
 front lee el Input d usuario
-useProducts()
-productQueries
-productService
+hook/useProducts()
+queries/productQueries
+services/productService
 GET/products?name_like=waffle
-[]
-UI vacía
+[] -- UI vacía
 
 este era el sistema ahora con products.filter reconoce y busca si un texto contiene otro
 API--Todos los productos--filter()--includes()--Productos encontrados --mostrarse enUI
