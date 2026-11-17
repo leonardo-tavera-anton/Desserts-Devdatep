@@ -145,4 +145,8 @@ ultimo
 git switch -c nivel-3
 git branch --show-current
 
-_npm.cmd install zustand_
+instalamos zustand
+_npm.cmd install zustand
+
+hubo 14 vulnerabilidades 8 moredaras y 6 altas al momento de instalar
+npm.cmd audit
