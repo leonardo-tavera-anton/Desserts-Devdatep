@@ -29,13 +29,14 @@ PARA INICIAR LOCALMENTE FRONTEND Y BACKEND
 
 _primera terminal para correr front_
 :5173 (vite usa por defecto)
-npm run dev
+__npm run dev
 
 _segundo terminal para correr base de datos local_
 cd src, cd data
 npm install -D json-server
 :3000 (si da error pueden cambiar de puerto)
 npx json-server data.json --port 3000
+__npm run api
 
 * use useState para hacer el carrito funcional esto es algo
 extra que no pedian pero solo agregue para ver funcionalidad
