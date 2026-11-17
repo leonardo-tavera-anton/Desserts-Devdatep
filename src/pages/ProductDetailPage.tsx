@@ -23,7 +23,7 @@ export function ProductDetailPage() {
   }
 
   if (isError) {
-    if (isAxiosError(error) && error.response?.status === 404) {
+    if (isAxiosError(error) && error.response?.status === 404) { //si no presenta
       return <NotFoundPage />;
     }
 

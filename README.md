@@ -7,3 +7,5 @@ git switch -c nivel-2
 ## Instalar dentro del proyecto
 npm.cmd install axios @tanstack/react-query react-router-dom
 npm.cmd run api
+
+## Conexion

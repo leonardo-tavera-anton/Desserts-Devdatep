@@ -13,8 +13,10 @@ export function HomePage() {
   const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
   const [search, setSearch] = useState('');
   const [category, setCategory] = useState('');
+
   const { data: products = [], isLoading, isError, error } = useProducts(search, category);
   const { data: allProducts = [] } = useProducts();
+
   const categories = Array.from(new Set(allProducts.map((product) => product.category)));//extraer categorias unicas
 
   const { cartItems, totalQuantity, orderTotal } = getCartData(allProducts, quantities);  //calculos del carrito
@@ -76,7 +78,7 @@ export function HomePage() {
           <section aria-label="Dessert selection">
             <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
               {isLoading ? (
-                Array.from({ length: 6 }, (_, index) => <ProductSkeleton key={index} />)
+                Array.from({ length: 6 }, (_, index) => <ProductSkeleton key={index} />) //error no encontrado
               ) : isError ? (
                 <p role="alert" className="col-span-full text-red-600">
                   No se pudieron cargar los productos: {error.message}

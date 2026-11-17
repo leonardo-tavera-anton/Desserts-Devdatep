@@ -126,5 +126,17 @@ de las 4 opciones declaradas
         error--- su mensaje
         no hay similitud--- lista vacia y mensaje
         hay coincidencia--- muestra la card del producto
+HomePage
+   llama a
+useProducts(search, category)
+   usa
+productQueries.list(...)
+   TanStack Query ejecuta queryFn
+productService.getProducts(...)
+   usa
+Axios (configurado en api.ts)
+   solicita los datos a
+json-server
 
+se puede agregar metodo de busqueda por precio, implementar
 
