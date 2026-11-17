@@ -108,4 +108,23 @@ GET/products?name_like=waffle
 [] -- UI vacía
 
 este era el sistema ahora con products.filter reconoce y busca si un texto contiene otro
-API--Todos los productos--filter()--includes()--Productos encontrados --mostrarse enUI
+API--Todos los productos--filter()--includes()--Productos encontrados --mostrarse en UI
+
+Flujo actual 17/11/2026
+1.usuario escribe en campo
+2.homepage guarda ese teto en search*
+3.homepage llama a useProduct(search, category)
+4.tanstacks query lo identifica la consulta por clave (queryfn)
+5.(tiempo artificial de 1,2 segundos q simula desploy real)
+6.productService solicita productos con Axios
+7.la api devuelve productor y aplica el filtro solo categoria
+8.en la vista se compara el nombre del texto con el metodo includes()
+todo esto en cuestion de milisegundos
+9.se le devuelve el resultado a homepage y en base a eso muestra una
+de las 4 opciones declaradas
+        cargando--- solo skeleton
+        error--- su mensaje
+        no hay similitud--- lista vacia y mensaje
+        hay coincidencia--- muestra la card del producto
+
+
