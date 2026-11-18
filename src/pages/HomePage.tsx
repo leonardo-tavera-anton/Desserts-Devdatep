@@ -141,7 +141,7 @@ export function HomePage() {
                   No se encontraron postres con esos filtros.
                 </p>
               ) : (
-                products.map((product) => (
+                products.map((product) => ( //recibe datos e incrementos disminuciones
                   <ProductCard
                     key={product.id} //mas
                     product={product} //mas

@@ -1,7 +1,7 @@
 *flujos*
 
 -nuevo carrito-
-1.ProductCard recibe HomePage
+1.ProductCard recibe datos d HomePage
 2,al realizar acciones llama a cartStore este ultimo lo actualiza mediante su id
 3.zustand usa persist y lo guarda en localStorage (una persistencia temporal mientras este corriendo no deploy)
 cart-storage hace q aguante recargas de la pagina, hasta el modal confirm

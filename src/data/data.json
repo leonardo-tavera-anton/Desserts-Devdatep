@@ -143,6 +143,18 @@
         "desktop": "/assets/images/image-creme-brulee-desktop.jpg"
       },
       "id": "9f4MCrG7N9Q"
+    },
+    {
+      "name": "pruebanetli",
+      "category": "probando",
+      "price": 10,
+      "image": {
+        "thumbnail": "/assets/images/image-macaron-thumbnail.jpg",
+        "mobile": "/assets/images/image-macaron-mobile.jpg",
+        "tablet": "/assets/images/image-macaron-tablet.jpg",
+        "desktop": "/assets/images/image-macaron-desktop.jpg"
+      },
+      "id": "az2p3NNIwLo"
     }
   ],
   "categories": [
@@ -189,6 +201,22 @@
     {
       "id": "qwBn5kxbJwc",
       "name": "ProbandoLocalmente"
+    },
+    {
+      "id": "ZrD14g6fLjo",
+      "name": "nuevo1"
+    },
+    {
+      "id": "S3ahcewBXoU",
+      "name": "nuevo2"
+    },
+    {
+      "id": "hKUh244mDsU",
+      "name": "probando"
+    },
+    {
+      "id": "OuqXFsep9s0",
+      "name": "a"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
