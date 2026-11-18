@@ -59,7 +59,9 @@ export const ProductCard = ({
       </div>
 
       <div className="mt-6">
-        <p className="text-sm text-rose-500">{product.category}</p>
+        <p className="w-fit rounded-full bg-rose-100 px-3 py-1 text-xs font-semibold text-rose-700">
+          {product.category}
+        </p>
         <h2 className="text-base font-semibold text-rose-900">
           <Link to={`/producto/${product.id}`} className="hover:text-red-600">
             {product.name}

@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { useProducts } from '../hooks/useProducts';
+import { usePaginatedProducts } from '../hooks/useProducts';
+import { useCategories } from '../hooks/useCategories';
 import { ProductSkeleton } from '../components/ProductSkeleton';
 import { Header } from '../components/Header';
 import { ProductCard } from '../components/ProductCard';
@@ -9,7 +10,8 @@ import { useCartStore } from '../store/cartStore';
 
 
 export function HomePage() {
-  //declaramos
+  const [page, setPage] = useState(1);
+  const perPage = 8;
   const [category, setCategory] = useState('');
   const items = useCartStore((state) => state.items); //llamamos al estado del carrito
   const clearCart = useCartStore((state) => state.clearCart); //en linea 29
@@ -22,10 +24,18 @@ export function HomePage() {
   //metodo de busqueda
   const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
   const [search, setSearch] = useState('');
-  const { data: products = [], isLoading, isError, error } = useProducts(search, category);
-  const { data: allProducts = [] } = useProducts();
-
-  const categories = Array.from(new Set(allProducts.map((product) => product.category)));//extraer categorias unicas
+  const {
+    data: productPage,
+    isLoading,
+    isError,
+    error,
+  } = usePaginatedProducts(search, category, page, perPage);
+  const {
+    data: categories = [],
+    isLoading: isCategoriesLoading,
+    isError: isCategoriesError,
+  } = useCategories();
+  const products = productPage?.data ?? [];
 
   //metodo para calcular cantidad de productos en el carrito
   const cartItems = items;
@@ -51,7 +61,10 @@ export function HomePage() {
             <input
               type="search"
               value={search}
-              onChange={(event) => setSearch(event.target.value)}
+              onChange={(event) => {
+                setSearch(event.target.value);
+                setPage(1);
+              }}
               placeholder="Ej. Tiramisu"
               className="rounded-lg border border-rose-300 bg-white px-4 py-3 font-normal outline-none focus:border-red-600 focus:ring-2 focus:ring-red-200"
             />
@@ -60,16 +73,25 @@ export function HomePage() {
             Filtrar por categoria
             <select
               value={category}
-              onChange={(event) => setCategory(event.target.value)}
+              onChange={(event) => {
+                setCategory(event.target.value);
+                setPage(1);
+              }}
               className="rounded-lg border border-rose-300 bg-white px-4 py-3 outline-none focus:border-red-600 focus:ring-2 focus:ring-red-200"
+              disabled={isCategoriesLoading || isCategoriesError}
             >
               <option value="">Todas las categorias</option>
               {categories.map((item) => (
-                <option key={item} value={item}>
-                  {item}
+                <option key={item.id} value={item.name}>
+                  {item.name}
                 </option>
               ))}
             </select>
+            {isCategoriesError && (
+              <span role="alert" className="text-sm font-normal text-red-600">
+                No se pudieron cargar las categorias.
+              </span>
+            )}
           </label>
         </div>
 
@@ -77,7 +99,7 @@ export function HomePage() {
           <section aria-label="Dessert selection">
             <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
               {isLoading ? (
-                Array.from({ length: 6 }, (_, index) => <ProductSkeleton key={index} />) //error no encontrado
+                Array.from({ length: perPage }, (_, index) => <ProductSkeleton key={index} />) //error no encontrado
               ) : isError ? (
                 <p role="alert" className="col-span-full text-red-600">
                   No se pudieron cargar los productos: {error.message}
@@ -99,6 +121,32 @@ export function HomePage() {
                 ))
               )}
             </div>
+            {!isLoading && !isError && productPage && productPage.pages > 1 && (
+              <nav
+                aria-label="Paginacion de productos"
+                className="mt-8 flex items-center justify-center gap-4"
+              >
+                <button
+                  type="button"
+                  onClick={() => setPage((currentPage) => currentPage - 1)}
+                  disabled={!productPage.prev}
+                  className="rounded-full border border-rose-300 px-4 py-2 text-sm font-semibold text-rose-900 hover:border-red-600 disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  Anterior
+                </button>
+                <span className="text-sm text-rose-900">
+                  Pagina {page} de {productPage.pages}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setPage((currentPage) => currentPage + 1)}
+                  disabled={!productPage.next}
+                  className="rounded-full border border-rose-300 px-4 py-2 text-sm font-semibold text-rose-900 hover:border-red-600 disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  Siguiente
+                </button>
+              </nav>
+            )}
           </section>
 
           <CartDrawer

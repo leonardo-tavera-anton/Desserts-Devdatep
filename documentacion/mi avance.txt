@@ -172,14 +172,10 @@ npm.cmd run lint
 
 en homepage elimino
 //import { getCartData } from '../utils/cartCalculations'; ya no se usa
-
-
 //const [quantities, setQuantities] = useState<Record<string, number>>({});
 //const { cartItems, totalQuantity, orderTotal } = getCartData(allProducts, quantities);  //calculos del carrito
 //const updateQuantity = (name: string, delta: number) => {    //acciones del carrito simplificadas
-
-
-//*const removeProduct = (name: string) => setQuantities((prev) => {
+//const removeProduct = (name: string) => setQuantities((prev) => {
 //const next = { ...prev };
 //delete next[name];
 //return next;
@@ -217,4 +213,52 @@ un esquema donde se declaran las reglas basicas para el flujo_
 
 en componentes craemos un formulario del producto
 components/ProductForm
+*dentro declaramos una constante q ayudara al momento d hacer un submit
+registrar los valores de losdatos y mas abajo el formulario dondse se indica
+q el campo se agrega mediante html a json por name y se registrara el mismo
+
+---para dato prop en json corremos los npm y da correcto sin vulnerabilidades
+
+ahora en productService.ts
+creo un metodo para crear los productos (es un requerimiento d lo q piden)
+esto obvio con un post, enviando los datos del ProductForm devolviendo response.data etcetcetc
+
+antes de seguir con PUT Y DELETE primero con create
+
+3:03 am
+ahora ya conociendo el metodo para create agrego el put y delete asincronos
+toca implementar las mutaciones q pide la prueba
+
+PRODUCTO
+FORMULARIO + SERVICE
+falta la gestion d paginas x CRUD, paginacion, endpoint d las categorias, notificaciones,
+drawer desplegable y deploy y el readme al final ya
+
+hooks/useProductMutations.ts (importante la nombracion)
+aqui creamos las mutaciones para poder modificar y actualizar la lista
+dentro validamos las mutaciones para q el cache no intervenda en la paginacion
+
+verificamos
+npm.cmd run buil
+npm.cmd run lint
+sin vulnerabilidades
+
+ya q todo va bien vamos a la pagina principal d manejo aqui se mostraran datos segun el cartStore
+pages/ProductManagementPage.tsx
+ya se declararon las formas de CRUD mensajes en xhtml para cada uno
+llamando a las mutaciones y servicios
+
+encagamos en el enrutamiento en App.tsx
+funciona ahora sin vista pero funciona en datos
+en header importo e ingreso un link to hacia admin/productos y dentro del mismo una vista simple 
+CRUD Completo-----
+
+PAGINACION Y CATEGORIAS
+se agrego paginacion desde json-server usando _page y _per_page=8.
+y la busqueda por nombre y categoria se aplican en la API antes de paginar
+se creo el endpoint GET /categories y el filtro de categoria ahora lee sus datos
+las categorias se muestran como badges en las tarjetas de productos
+se comprobo la primera pagina con 8 productos y la segunda con los 2 restantes
+
+
 

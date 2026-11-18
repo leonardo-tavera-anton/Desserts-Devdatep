@@ -9,7 +9,8 @@
       },
       "name": "Waffle with Berries",
       "category": "Waffle",
-      "price": 6.5
+      "price": 6.5,
+      "id": "DLzmOdMEtNc"
     },
     {
       "image": {
@@ -20,18 +21,20 @@
       },
       "name": "Vanilla Bean Crème Brûlée",
       "category": "Crème Brûlée",
-      "price": 7
+      "price": 7,
+      "id": "rygoF72Ehyo"
     },
     {
+      "name": "Macaron Mix of Five",
+      "category": "Macaron",
+      "price": 9,
       "image": {
         "thumbnail": "/assets/images/image-macaron-thumbnail.jpg",
         "mobile": "/assets/images/image-macaron-mobile.jpg",
         "tablet": "/assets/images/image-macaron-tablet.jpg",
         "desktop": "/assets/images/image-macaron-desktop.jpg"
       },
-      "name": "Macaron Mix of Five",
-      "category": "Macaron",
-      "price": 8
+      "id": "7P-3vU0JeFY"
     },
     {
       "image": {
@@ -42,7 +45,8 @@
       },
       "name": "Classic Tiramisu",
       "category": "Tiramisu",
-      "price": 5.5
+      "price": 5.5,
+      "id": "3augTnK6IxQ"
     },
     {
       "image": {
@@ -53,7 +57,8 @@
       },
       "name": "Pistachio Baklava",
       "category": "Baklava",
-      "price": 4
+      "price": 4,
+      "id": "4qpjoAECSwU"
     },
     {
       "image": {
@@ -64,7 +69,8 @@
       },
       "name": "Lemon Meringue Pie",
       "category": "Pie",
-      "price": 5
+      "price": 5,
+      "id": "BL3xe0qq9iQ"
     },
     {
       "image": {
@@ -75,7 +81,8 @@
       },
       "name": "Red Velvet Cake",
       "category": "Cake",
-      "price": 4.5
+      "price": 4.5,
+      "id": "DDgpDfAXGV4"
     },
     {
       "image": {
@@ -86,7 +93,8 @@
       },
       "name": "Salted Caramel Brownie",
       "category": "Brownie",
-      "price": 4.5
+      "price": 4.5,
+      "id": "r_bcJ4m7zFA"
     },
     {
       "image": {
@@ -97,7 +105,33 @@
       },
       "name": "Vanilla Panna Cotta",
       "category": "Panna Cotta",
-      "price": 6.5
+      "price": 6.5,
+      "id": "Oy7Thk7Rppo"
+    },
+    {
+      "name": "Hola Prueba",
+      "category": "Prueba",
+      "price": 20,
+      "image": {
+        "thumbnail": "/assets/images/image-meringue-thumbnail.jpg",
+        "mobile": "/assets/images/image-meringue-mobile.jpg",
+        "tablet": "/assets/images/image-meringue-tablet.jpg",
+        "desktop": "/assets/images/image-meringue-desktop.jpg"
+      },
+      "id": "BGkMWOenztg"
     }
-  ]
+  ],
+  "categories": [
+    { "id": "waffle", "name": "Waffle" },
+    { "id": "creme-brulee", "name": "Crème Brûlée" },
+    { "id": "macaron", "name": "Macaron" },
+    { "id": "tiramisu", "name": "Tiramisu" },
+    { "id": "baklava", "name": "Baklava" },
+    { "id": "pie", "name": "Pie" },
+    { "id": "cake", "name": "Cake" },
+    { "id": "brownie", "name": "Brownie" },
+    { "id": "panna-cotta", "name": "Panna Cotta" },
+    { "id": "prueba", "name": "Prueba" }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

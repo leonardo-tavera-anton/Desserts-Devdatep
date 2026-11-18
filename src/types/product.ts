@@ -11,6 +11,21 @@ export interface Product {
   price: number;
 }
 
+export interface ProductPage {
+  first: number;
+  prev: number | null;
+  next: number | null;
+  last: number;
+  pages: number;
+  items: number;
+  data: Product[];
+}
+
+export interface Category {
+  id: string;
+  name: string;
+}
+
 export interface CartItem {
   product: Product;
   quantity: number;

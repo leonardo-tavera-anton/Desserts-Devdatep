@@ -1,5 +1,5 @@
 import type { AxiosInstance } from 'axios';
-import type { Product } from '../types/product';
+import type { Product, ProductPage } from '../types/product';
 import api from './api';
 
 // ProductService define las peticiones; api.ts configura Axios.
@@ -9,7 +9,28 @@ class ProductService {
   constructor(axiosInstance: AxiosInstance) {
     this.axiosInstance = axiosInstance;
   }
+  //CREATE
+  async createProduct(product: Omit<Product, 'id'>): Promise<Product> {
+  const response = await this.axiosInstance.post<Product>('/products', product);
+  return response.data;
+  }
+  //PUT
+  async updateProduct(
+    id: string,
+    product: Omit<Product, 'id'>
+    ): Promise<Product> {
+    const response = await this.axiosInstance.put<Product>(
+      `/products/${id}`,
+      product
+    );
+  return response.data;
+  }
+  //DELETE
+  async deleteProduct(id: string): Promise<void> {
+  await this.axiosInstance.delete(`/products/${id}`);
+  }
 
+ //GET por id
   async getProductById(id: string): Promise<Product> {
     const response = await this.axiosInstance.get<Product>(`/products/${id}`);//segun su id
     return response.data;
@@ -41,6 +62,32 @@ class ProductService {
     }
 
     return products;
+  }
+
+  async getPaginatedProducts(
+    search: string,
+    category: string,
+    page: number,
+    perPage: number
+  ): Promise<ProductPage> {
+    const params: Record<string, string | number> = {
+      _page: page,
+      _per_page: perPage,
+    };
+
+    if (search.trim()) {
+      params['name:contains'] = search.trim();
+    }
+
+    if (category) {
+      params.category = category;
+    }
+
+    const response = await this.axiosInstance.get<ProductPage>('/products', {
+      params,
+    });
+
+    return response.data;
   }
 }
 

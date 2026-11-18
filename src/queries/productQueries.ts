@@ -16,6 +16,27 @@ export const productQueries = {
       gcTime: CACHE_TIME,
     }),
 
+  paginatedList: (
+    search: string,
+    category: string,
+    page: number,
+    perPage: number
+  ) =>
+    queryOptions({
+      queryKey: ['products', { search, category, page, perPage }] as const,
+      queryFn: async () => {
+        await new Promise((resolve) => setTimeout(resolve, 1200));
+        return productService.getPaginatedProducts(
+          search,
+          category,
+          page,
+          perPage
+        );
+      },
+      staleTime: FRESH_TIME,
+      gcTime: CACHE_TIME,
+    }),
+
   detail: (id: string) =>
     queryOptions({
       queryKey: ['product', id] as const,
