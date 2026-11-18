@@ -35,7 +35,7 @@ class ProductService {
     const response = await this.axiosInstance.get<Product>(`/products/${id}`);//segun su id
     return response.data;
   }
-
+//GET general
   async getProducts(
     search = '',
     category = ''
@@ -64,6 +64,7 @@ class ProductService {
     return products;
   }
 
+  //servicio de paginacion
   async getPaginatedProducts(
     search: string,
     category: string,
@@ -82,7 +83,7 @@ class ProductService {
     if (category) {
       params.category = category;
     }
-
+    //utiliza axios espera q le d los productos d la pagina
     const response = await this.axiosInstance.get<ProductPage>('/products', {
       params,
     });

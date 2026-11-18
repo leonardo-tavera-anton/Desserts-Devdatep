@@ -12,11 +12,11 @@ interface ProductFormProps { //interfaz contenedora del boton y los datos del fo
 
 export const ProductForm = ({ defaultValues, onSubmit, submitLabel }: ProductFormProps) => {
   const { register, handleSubmit, formState: { errors } } = useForm<ProductFormValues>({
-    resolver: zodResolver(productSchema),
+    resolver: zodResolver(productSchema), //usa el schema definido
     defaultValues,
   });
 
-  //register devolvera name dentro del campo del producto q se nombrara
+  //register devolvera name dentro del campo del producto q se nombrara para validar y enviar al productManagementPage
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="grid gap-4 rounded-xl bg-white p-6 shadow-sm">
     <div className="grid gap-2">
