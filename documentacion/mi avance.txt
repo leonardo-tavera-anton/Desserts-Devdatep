@@ -299,3 +299,10 @@ NETLIFY.TOML
 configura comandos requeridos para la resolver rutas
 api.ts ahora acepta vite_api_url para el despliege (deploy)
 
+aqui poco mas conecto mi github con Netlify
+doy acceso al repo branch 3 para poder deployar
+la info ya fue cargada
+como nombre de proyecto uso "dessertsdevdatep"
+
+conecta Netlify con el data.json local (increible)
+
