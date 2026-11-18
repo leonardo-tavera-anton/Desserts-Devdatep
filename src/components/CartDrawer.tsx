@@ -4,7 +4,7 @@ interface CartDrawerProps {
   items: CartItem[];
   totalQuantity: number;
   orderTotal: number;
-  onRemoveItem: (productName: string) => void;
+  onRemoveItem: (productId: string) => void;
   onConfirmOrder: () => void;
 }
 
@@ -50,11 +50,11 @@ export const CartDrawer = ({
                 </div>
                 <button
                   type="button"
-                  onClick={() => onRemoveItem(product.name)}
+                  onClick={() => onRemoveItem(product.id)} //modificado
                   aria-label={`Remove ${product.name} from cart`}
                   className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-rose-300 text-xs text-rose-400 transition-colors hover:border-rose-900 hover:text-rose-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
                 >
-                  x
+                  x 
                 </button>
               </li>
             ))}

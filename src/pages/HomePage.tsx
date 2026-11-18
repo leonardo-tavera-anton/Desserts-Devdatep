@@ -1,44 +1,43 @@
 import { useState } from 'react';
 import { useProducts } from '../hooks/useProducts';
-import { getCartData } from '../utils/cartCalculations';
 import { ProductSkeleton } from '../components/ProductSkeleton';
 import { Header } from '../components/Header';
 import { ProductCard } from '../components/ProductCard';
 import { CartDrawer } from '../components/CartDrawer';
 import { ConfirmOrderModal } from '../components/ConfirmOrderModal';
+import { useCartStore } from '../store/cartStore';
 
 
 export function HomePage() {
-  const [quantities, setQuantities] = useState<Record<string, number>>({});
+  //declaramos
+  const [category, setCategory] = useState('');
+  const items = useCartStore((state) => state.items); //llamamos al estado del carrito
+  const clearCart = useCartStore((state) => state.clearCart); //en linea 29
+
+  const addItem = useCartStore((state) => state.addItem);
+  const removeItem = useCartStore((state) => state.removeItem);
+  const incrementItem = useCartStore((state) => state.incrementItem);
+  const decrementItem = useCartStore((state) => state.decrementItem);
+
+  //metodo de busqueda
   const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
   const [search, setSearch] = useState('');
-  const [category, setCategory] = useState('');
-
   const { data: products = [], isLoading, isError, error } = useProducts(search, category);
   const { data: allProducts = [] } = useProducts();
 
   const categories = Array.from(new Set(allProducts.map((product) => product.category)));//extraer categorias unicas
 
-  const { cartItems, totalQuantity, orderTotal } = getCartData(allProducts, quantities);  //calculos del carrito
-  const updateQuantity = (name: string, delta: number) => {    //acciones del carrito simplificadas
-
-    setQuantities((prev) => {
-      const next = { ...prev };
-      const newQty = (next[name] ?? 0) + delta;
-      if (newQty <= 0) delete next[name];
-      else next[name] = newQty;
-      return next;
-    });
-  };
-
-  const removeProduct = (name: string) => setQuantities((prev) => {
-    const next = { ...prev };
-    delete next[name];
-    return next;
-  });
-
+  //metodo para calcular cantidad de productos en el carrito
+  const cartItems = items;
+  const totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0);
+  const orderTotal = items.reduce(
+    (sum, item) => sum + item.product.price * item.quantity,
+    0
+  );
+ 
+  //metodo nueva orden
   const startNewOrder = () => {
-    setQuantities({});
+    clearCart();
     setIsConfirmationOpen(false);
   };
 
@@ -90,12 +89,12 @@ export function HomePage() {
               ) : (
                 products.map((product) => (
                   <ProductCard
-                    key={product.id}
-                    product={product}
-                    quantity={quantities[product.name] ?? 0}
-                    onAdd={() => updateQuantity(product.name, 1)}
-                    onIncrement={() => updateQuantity(product.name, 1)}
-                    onDecrement={() => updateQuantity(product.name, -1)}
+                    key={product.id} //mas
+                    product={product} //mas
+                    quantity={items.find((item) => item.product.id === product.id)?.quantity ?? 0}
+                    onAdd={() => addItem(product)}
+                    onIncrement={() => incrementItem(product.id)}
+                    onDecrement={() => decrementItem(product.id)}
                   />
                 ))
               )}
@@ -106,7 +105,7 @@ export function HomePage() {
             items={cartItems}
             totalQuantity={totalQuantity}
             orderTotal={orderTotal}
-            onRemoveItem={removeProduct}
+            onRemoveItem={removeItem}
             onConfirmOrder={() => setIsConfirmationOpen(true)}
           />
         </div>

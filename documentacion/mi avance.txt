@@ -148,6 +148,7 @@ git branch --show-current
 instalamos zustand
 _npm.cmd install zustand
 
+AUDITORIA
 _hubo 14 vulnerabilidades 8 moredaras y 6 altas al momento de instalar
 npm.cmd audit fix
 11 vulnerabilidades
@@ -156,3 +157,64 @@ npm.cmd ls vite @vitejs/plugin-react picomatch
 4 vulnerabilidades
 
 npm.cmd install --save-dev @tailwindcss/vite tailwindcss
+COMPROBAMOS sigue habiendo vulnerabilidades
+npm.cmd audit --omit=dev
+0 vulnerabilidades al fin
+
+empiezo a implementar stores/createJSONStorage
+npm.cmd run build
+
+para transformar los modulos
+
+npm.cmd run lint
+> desserts-devdatep@0.0.0 lint
+> eslint .
+
+en homepage elimino
+//import { getCartData } from '../utils/cartCalculations'; ya no se usa
+
+
+//const [quantities, setQuantities] = useState<Record<string, number>>({});
+//const { cartItems, totalQuantity, orderTotal } = getCartData(allProducts, quantities);  //calculos del carrito
+//const updateQuantity = (name: string, delta: number) => {    //acciones del carrito simplificadas
+
+
+//*const removeProduct = (name: string) => setQuantities((prev) => {
+//const next = { ...prev };
+//delete next[name];
+//return next;
+//});
+//setQuantities((prev) => {
+//const next = { ...prev };
+//const newQty = (next[name] ?? 0) + delta;
+... if (newQty <= 0) delete next[name];
+      else next[name] = newQty;
+      return next;
+   });
+};
+
+  debajo de ProductCard
+  se utiliza el nuevo metodo de
+                    <ProductCard
+                    key={product.id}
+                    product={product}
+                    quantity={quantities[product.name] ?? 0}
+                    onAdd={() => updateQuantity(product.name, 1)}
+                    onIncrement={() => updateQuantity(product.name, 1)}
+                    onDecrement={() => updateQuantity(product.name, -1)}
+                  />
+el CartDrawer actualizado ya elimina mediante el cartStore
+
+--React Hook Form y validación con Zod--
+
+_npm.cmd install react-hook-form zod @hookform/resolvers
+para los formularios CRUD
+otra vez11 vulnerabilidades al final le hago auditoria
+
+creo src/schemas
+dentro productSchema.ts
+un esquema donde se declaran las reglas basicas para el flujo_
+
+en componentes craemos un formulario del producto
+components/ProductForm
+

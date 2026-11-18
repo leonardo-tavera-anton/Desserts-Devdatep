@@ -11,11 +11,14 @@
     "api": "json-server src/data/data.json --port 3000"
   },
   "dependencies": {
+    "@hookform/resolvers": "^7.0.7",
     "@tanstack/react-query": "^5.107.1",
     "axios": "^1.21.1",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
+    "react-hook-form": "^7.92.0",
     "react-router-dom": "^7.18.5",
+    "zod": "^4.6.7",
     "zustand": "^5.1.0"
   },
   "devDependencies": {
