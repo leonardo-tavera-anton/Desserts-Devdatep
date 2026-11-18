@@ -104,4 +104,4 @@ Rutas de la aplicación:
 
 ## Deploy
 
-El archivo `netlify.toml` configura el build de Vite, publica `dist/` y redirige las rutas de React Router a `index.html`. Antes de desplegar, configura `VITE_API_URL` en Netlify con la URL pública del API. El frontend publicado no puede acceder al `localhost` de la computadora del visitante.
+El archivo `netlify.toml` configura el build de Vite, publica `dist/` y redirige las rutas de React Router a `index.html`. Antes de desplegar, configura `VITE_API_URL` en Netlify con la URL pública del API. El frontend publicado puede acceder al `localhost:3000` la api local de de la computadora del visitante.
