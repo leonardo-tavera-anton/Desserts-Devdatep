@@ -16,6 +16,16 @@ cart-storage hace q aguante recargas de la pagina, hasta el modal confirm
 el cual llama a un clearCart para vaciar (vacia tmb el localStorage)
 
 --CRUD--
+
+ProductManagementPage
+    ProductForm
+    React Hook Form
+    validacion d Zod
+    mutacion d TanStack Query
+    servicios Axios
+    json-server
+    invalidación d cache + toast
+
 -crear y editar los productos(formulario y su validacion)- 
 1.ProductManagementPage /admin/productos, envia valores al formulacio /PUT, al editar los llama /GET
 2.ProductForm verifica esta info del ProductManagementPage y envia los datos validamos
@@ -34,3 +44,21 @@ esto para evitar inconsistencias entre categorias huerfanas o productos huerfano
 2.detallar si la ruta /producto/:id no recibe respuesta d ese id del producto, muestra un error 404 con vista
 3.eliminar se confirma en el modal y el hook  realiza DELETE /products/:id
 4.las escrituras llegan mediante el api local por axios al http (todo dentro de api.ts)
+
+--PAGINACION--
+Filtros/pagina en HomePage
+usePaginatedProducts
+productQueries
+productService
+GET /products con filtros y paginacion
+productos + metadatos... tarjetas y controles de pagina
+
+ProductCard muestra la categoria como un badge
+
+--TOATS--
+1.ProductManagementPage tiene funciones q deciden el mensaje q se va a mostrar y toast.tsx lo presenta
+segun sea el caso con notificaciones q muestran el (message)
+
+
+el carrito lo maneja Zustand y lo persiste en el navegador
+los productos y categorias pasan por los hooks d tansatck query, los servicios de axios y json-server
