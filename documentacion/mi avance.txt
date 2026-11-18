@@ -315,4 +315,8 @@ dentro de ProductForm tmb hay este dato solo tener en cuenta
 de forma desplegada
 no actualiza el json dado q no esta en la nube sin embargo
 si se crea localmente productos si se muestran
+crypto.randomUUID() se utiliza en categoryService lo envia al post/categories
+
+tengo la duda como mencionan en los esperados, solo usar API localmente
+esto contaria como incompleto? desplegando front y back local no responde
 
