@@ -62,3 +62,4 @@ segun sea el caso con notificaciones q muestran el (message)
 
 el carrito lo maneja Zustand y lo persiste en el navegador
 los productos y categorias pasan por los hooks d tansatck query, los servicios de axios y json-server
+page- hook- query

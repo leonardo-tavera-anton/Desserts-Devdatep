@@ -24,7 +24,7 @@ export function ProductManagementPage()
     const[editingProduct, setEditingProduct] = useState<Product | null>(null);
     const [pendingDelete, setPendingDelete] = useState<Product | null>(null);
     const [toast, setToast] = useState<ToastMessage | null>(null);
-    const { data: products = [], isLoading, isError, error } = useProducts();
+    const { data: products = [], isLoading, isError, error } = useProducts(); //lectura
         const createMutation = useCreateProduct();
         const updateMutation = useUpdateProduct();
         const deleteMutation = useDeleteProduct();

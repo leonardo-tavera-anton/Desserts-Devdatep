@@ -20,7 +20,7 @@ export const usePaginatedProducts = (
   );
 };
 
-// Hook que conecta los componentes con la consulta del detalle.
+//hook que conecta los componentes con la consulta del detalle.
 export const useProduct = (id: string) => {
   return useQuery(productQueries.detail(id));
 };
