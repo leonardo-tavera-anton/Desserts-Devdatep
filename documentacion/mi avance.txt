@@ -306,3 +306,13 @@ como nombre de proyecto uso "dessertsdevdatep"
 
 conecta Netlify con el data.json local (increible)
 
+de forma local
+correcion de creacion de categorias
+categoryService solo leia /categories del json
+ahora al no estar registrado lo automatiza
+dentro de ProductForm tmb hay este dato solo tener en cuenta
+
+de forma desplegada
+no actualiza el json dado q no esta en la nube sin embargo
+si se crea localmente productos si se muestran
+

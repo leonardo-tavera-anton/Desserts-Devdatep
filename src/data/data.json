@@ -119,6 +119,30 @@
         "desktop": "/assets/images/image-meringue-desktop.jpg"
       },
       "id": "BGkMWOenztg"
+    },
+    {
+      "name": "Netlify Prueba",
+      "category": "CategoriaPrueba",
+      "price": 99,
+      "image": {
+        "thumbnail": "/assets/images/image-baklava-thumbnail.jpg",
+        "mobile": "/assets/images/image-baklava-mobile.jpg",
+        "tablet": "/assets/images/image-baklava-tablet.jpg",
+        "desktop": "/assets/images/image-baklava-desktop.jpg"
+      },
+      "id": "IEkMxrhLgTs"
+    },
+    {
+      "name": "Local Prueba",
+      "category": "ProbandoLocalmente",
+      "price": 22,
+      "image": {
+        "thumbnail": "/assets/images/image-creme-brulee-thumbnail.jpg",
+        "mobile": "/assets/images/image-creme-brulee-mobile.jpg",
+        "tablet": "/assets/images/image-creme-brulee-tablet.jpg",
+        "desktop": "/assets/images/image-creme-brulee-desktop.jpg"
+      },
+      "id": "9f4MCrG7N9Q"
     }
   ],
   "categories": [
@@ -161,6 +185,10 @@
     {
       "id": "prueba",
       "name": "Prueba"
+    },
+    {
+      "id": "qwBn5kxbJwc",
+      "name": "ProbandoLocalmente"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
