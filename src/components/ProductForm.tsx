@@ -27,6 +27,7 @@ export const ProductForm = ({ defaultValues, onSubmit, submitLabel }: ProductFor
     <div className="grid gap-2">
         <label htmlFor="category" className="text-sm font-semibold text-rose-900">Categoria:</label>
         <input id="category" {...register('category')} className="w-full rounded-lg border border-rose-300 bg-white px-4 py-3 outline-none focus:border-red-600 focus:ring-2 focus:ring-red-200" />
+        <p className="text-xs text-rose-500">Las categorias nuevas se registran al guardar el producto</p>
         {errors.category && <p role="alert" className="text-sm text-red-600">{errors.category.message}</p> }
         
     </div>

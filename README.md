@@ -63,6 +63,7 @@ La base de datos de desarrollo está en `src/data/data.json`. El proyecto no con
 | PUT | `/products/:id` | Actualiza un producto. |
 | DELETE | `/products/:id` | Elimina un producto. |
 | GET | `/categories` | Obtiene las categorías para el filtro. |
+| POST | `/categories` | Registra una categoría nueva al crear o editar un producto. |
 
 La lista del catálogo solicita páginas con `_page` y `_per_page=8`. La búsqueda se envía al servidor con `name:contains`; el filtro de categoría se envía como `category`. Por ejemplo:
 
@@ -101,6 +102,7 @@ Rutas de la aplicación:
 - El carrito se persiste en `localStorage` mediante Zustand.
 - React Hook Form administra el formulario reutilizado para crear y editar; Zod valida sus datos.
 - El filtro de nombre y categoría se ejecuta en json-server antes de aplicar la paginación.
+- Al guardar un producto con una categoría nueva, la aplicación la registra en `/categories` e invalida su caché.
 
 ## Deploy
 

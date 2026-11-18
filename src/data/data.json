@@ -119,30 +119,6 @@
         "desktop": "/assets/images/image-meringue-desktop.jpg"
       },
       "id": "BGkMWOenztg"
-    },
-    {
-      "name": "Adios",
-      "category": "no se",
-      "price": 1,
-      "image": {
-        "thumbnail": "/assets/images/image-cake-thumbnail.jpg",
-        "mobile": "/assets/images/image-cake-mobile.jpg",
-        "tablet": "/assets/images/image-cake-tablet.jpg",
-        "desktop": "/assets/images/image-cake-desktop.jpg"
-      },
-      "id": "E5Xk__XfAI0"
-    },
-    {
-      "name": "Prueba en Netlify",
-      "category": "funciona con local ahora pruebo si se conecta",
-      "price": 99,
-      "image": {
-        "thumbnail": "/assets/images/image-brownie-thumbnail.jpg",
-        "mobile": "/assets/images/image-brownie-mobile.jpg",
-        "tablet": "/assets/images/image-brownie-tablet.jpg",
-        "desktop": "/assets/images/image-brownie-desktop.jpg"
-      },
-      "id": "5mZ4uqgm318"
     }
   ],
   "categories": [

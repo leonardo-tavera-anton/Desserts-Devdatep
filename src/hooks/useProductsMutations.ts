@@ -1,14 +1,18 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import type { Product } from '../types/product';
 import { productService } from '../services/productService';
+import { categoryService } from '../services/categoryService';
 
 export const useCreateProduct = () => { //C
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (product: Omit<Product, 'id'>) =>
-      productService.createProduct(product),
+    mutationFn: async (product: Omit<Product, 'id'>) => {
+      await categoryService.ensureCategoryExists(product.category);
+      return productService.createProduct(product);
+    },
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['products'] }), //invalida la cache para actualizar
+    onSettled: () => queryClient.invalidateQueries({ queryKey: ['categories'] }),
   });
 };
 
@@ -16,13 +20,16 @@ export const useUpdateProduct = () => { //U
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: ({
+    mutationFn: async ({
       id,
       product,
     }: {
       id: string;
       product: Omit<Product, 'id'>;
-    }) => productService.updateProduct(id, product),
+    }) => {
+      await categoryService.ensureCategoryExists(product.category);
+      return productService.updateProduct(id, product);
+    },
 
     onSuccess: async (_updatedProduct, { id }) => {
       await Promise.all([
@@ -30,6 +37,7 @@ export const useUpdateProduct = () => { //U
         queryClient.invalidateQueries({ queryKey: ['product', id] }),
       ]);
     },
+    onSettled: () => queryClient.invalidateQueries({ queryKey: ['categories'] }),
   });
 };
 
