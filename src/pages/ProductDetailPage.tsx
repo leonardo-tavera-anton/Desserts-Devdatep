@@ -1,6 +1,6 @@
 import { isAxiosError } from 'axios';
 import { Link, useParams } from 'react-router-dom';
-import { useProduct } from '../hooks/useProducts';
+import { useProduct } from '../hooks/useProductsQueries';
 import { NotFoundPage } from './NotFoundPage';
 
 export function ProductDetailPage() {

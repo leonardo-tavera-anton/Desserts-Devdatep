@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { productQueries } from '../queries/productQueries';
 
-// Hook que conecta los componentes con la consulta de la lista.
+// Hooks que conectan los componentes con las consultas de productos.
 export const useProducts = (
   search: string = '',
   category: string = ''

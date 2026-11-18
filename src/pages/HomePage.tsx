@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { usePaginatedProducts } from '../hooks/useProducts';
+import { usePaginatedProducts } from '../hooks/useProductsQueries';
 import { useCategories } from '../hooks/useCategories';
 import { ProductSkeleton } from '../components/ProductSkeleton';
 import { Header } from '../components/Header';

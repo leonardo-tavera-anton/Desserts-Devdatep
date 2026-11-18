@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useProducts } from '../hooks/useProducts';
+import { useProducts } from '../hooks/useProductsQueries';
 import { useCreateProduct, useUpdateProduct, useDeleteProduct } from '../hooks/useProductsMutations';
 import { ProductForm } from '../components/ProductForm';
 import { Toast, type ToastMessage } from '../components/Toast';
