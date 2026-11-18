@@ -1,0 +1,36 @@
+*flujos*
+
+-nuevo carrito-
+1.ProductCard recibe HomePage
+2,al realizar acciones llama a cartStore este ultimo lo actualiza mediante su id
+3.zustand usa persist y lo guarda en localStorage (una persistencia temporal mientras este corriendo no deploy)
+cart-storage hace q aguante recargas de la pagina, hasta el modal confirm
+4.dentro de home se calculan las cantidades y se muestran
+
+
+-drawer y confirmacion-
+1.homepage abre el drawer para moviles opcion funcional
+2.cartDrawer presenta datos del carrito articulos total etcetcetc
+3.ConfirmOrderModal muestra este resumen de datos
+4.en este ultimo utiliza el metodo starNewOrden declarado en home
+el cual llama a un clearCart para vaciar (vacia tmb el localStorage)
+
+--CRUD--
+-crear y editar los productos(formulario y su validacion)- 
+1.ProductManagementPage /admin/productos, envia valores al formulacio /PUT, al editar los llama /GET
+2.ProductForm verifica esta info del ProductManagementPage y envia los datos validamos
+3.productSchema exige nombre,categoria, precio postivio y mayor a 0, tmb 4 rutas d imagen si algo falta no se envia la peticion
+
+-guardar productos y categorias-
+1-useProductsMutations se encarga d la creacion y edicion
+2.previo categoryService consulta a /categories si no hay una categoria similar siempre en toLowerCase()
+y si no existe genera un pseudo id random con crypto.randomUUID()
+3.productService realiza el /POST y /PUT con axios, json-server asigna el id al producto
+4.se completa la mutacion tanstackquery invalida consultas para q la lista y categorias se carguen d nuevo
+esto para evitar inconsistencias entre categorias huerfanas o productos huerfanos
+
+-listar detallar y eliminar-
+1.ProductManagementPage usa hooks para cargar productos, estas opciones d cache se encuentran en productQueries
+2.detallar si la ruta /producto/:id no recibe respuesta d ese id del producto, muestra un error 404 con vista
+3.eliminar se confirma en el modal y el hook  realiza DELETE /products/:id
+4.las escrituras llegan mediante el api local por axios al http (todo dentro de api.ts)
