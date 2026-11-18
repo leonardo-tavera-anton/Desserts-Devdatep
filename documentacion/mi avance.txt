@@ -295,6 +295,7 @@ cartStore mantiene la constancia de los productos y cantidades y home el totalme
 CartDrawer maneja quitar o confirmar productos
 ConfirmOrderModal al confirmar se cierra el drawer 
 
-NOTIFICACIONES
-
+NETLIFY.TOML
+configura comandos requeridos para la resolver rutas
+api.ts ahora acepta vite_api_url para el despliege (deploy)
 
