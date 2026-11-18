@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useProducts } from '../hooks/useProducts';
 import { useCreateProduct, useUpdateProduct, useDeleteProduct } from '../hooks/useProductsMutations';
 import { ProductForm } from '../components/ProductForm';
+import { Toast, type ToastMessage } from '../components/Toast';
 import type { Product } from '../types/product';
 import type { ProductFormValues } from '../schemas/productSchema';
 
@@ -22,22 +23,43 @@ export function ProductManagementPage()
 {
     const[editingProduct, setEditingProduct] = useState<Product | null>(null);
     const [pendingDelete, setPendingDelete] = useState<Product | null>(null);
+    const [toast, setToast] = useState<ToastMessage | null>(null);
     const { data: products = [], isLoading, isError, error } = useProducts();
         const createMutation = useCreateProduct();
         const updateMutation = useUpdateProduct();
         const deleteMutation = useDeleteProduct();
 
-        const handleFormSubmit = (values: ProductFormValues) => {
-            const onSuccess = () => setEditingProduct(null);
+        useEffect(() => {
+            if (!toast || toast.type === 'error') return;
 
+            const timeoutId = window.setTimeout(() => setToast(null), 4000);
+            return () => window.clearTimeout(timeoutId);
+        }, [toast]);
+
+        const handleFormSubmit = (values: ProductFormValues) => { //mensajes personalizados segun caso
             if (editingProduct) {
                 updateMutation.mutate(
                 { id: editingProduct.id, product: values },
-                
-                { onSuccess }
+                {
+                    onSuccess: () => {
+                        setEditingProduct(null);
+                        setToast({ type: 'success', message: 'Producto actualizado correctamente.' });
+                    },
+                    onError: () => {
+                        setToast({ type: 'error', message: 'No se pudo actualizar el producto. Intenta de nuevo.' });
+                    },
+                }
                 );
             } else {
-                createMutation.mutate(values, { onSuccess });
+                createMutation.mutate(values, { 
+                    onSuccess: () => {
+                        setEditingProduct(null);
+                        setToast({ type: 'success', message: 'Producto creado correctamente.' });
+                    },
+                    onError: () => {
+                        setToast({ type: 'error', message: 'No se pudo crear el producto. Intenta de nuevo.' });
+                    },
+                });
             }
             };
             return (
@@ -102,7 +124,13 @@ export function ProductManagementPage()
                                 type="button"
                                 onClick={() =>
                                 deleteMutation.mutate(pendingDelete.id, {
-                                    onSuccess: () => setPendingDelete(null),
+                                    onSuccess: () => {
+                                        setPendingDelete(null);
+                                        setToast({ type: 'success', message: 'Producto eliminado correctamente.' });
+                                    },
+                                    onError: () => {
+                                        setToast({ type: 'error', message: 'No se pudo eliminar el producto. Intenta de nuevo.' });
+                                    },
                                 })
                                 }
                                 className="rounded-full bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700"
@@ -115,10 +143,14 @@ export function ProductManagementPage()
                         )}
 
 
-                        {createMutation.isError && <p role="alert" className="text-sm text-red-600">No se pudo crear: {createMutation.error.message}</p>}
-                        {updateMutation.isError && <p role="alert" className="text-sm text-red-600">No se pudo editar: {updateMutation.error.message}</p>}
-                        {deleteMutation.isError && <p role="alert" className="text-sm text-red-600">No se pudo eliminar: {deleteMutation.error.message}</p>}
                     </div>
+                    {toast && (
+                        <Toast
+                            type={toast.type}
+                            message={toast.message}
+                            onClose={() => setToast(null)}
+                        />
+                    )}
                 </main>
             );
 }

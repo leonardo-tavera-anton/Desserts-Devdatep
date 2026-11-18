@@ -1,9 +1,12 @@
+import { useEffect, useRef } from 'react';
 import type { CartItem } from '../types/product';
 
 interface CartDrawerProps {
   items: CartItem[];
   totalQuantity: number;
   orderTotal: number;
+  isOpen: boolean;
+  onClose: () => void;
   onRemoveItem: (productId: string) => void;
   onConfirmOrder: () => void;
 }
@@ -12,12 +15,43 @@ export const CartDrawer = ({
   items,
   totalQuantity,
   orderTotal,
+  isOpen,
+  onClose,
   onRemoveItem,
   onConfirmOrder,
 }: CartDrawerProps) => {
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (isOpen) closeButtonRef.current?.focus();
+  }, [isOpen]);
+
   return (
-    <aside className="h-fit rounded-xl bg-white p-6 shadow-sm sm:p-8 lg:sticky lg:top-8">
-      <h2 className="text-2xl font-bold text-red-600">Your Cart ({totalQuantity})</h2>
+    <aside
+      id="cart-drawer"
+      role={isOpen ? 'dialog' : 'complementary'}
+      aria-modal={isOpen || undefined}
+      aria-labelledby="cart-title"
+      className={`${
+        isOpen
+          ? 'fixed inset-y-0 right-0 z-50 h-dvh w-[min(90vw,24rem)] overflow-y-auto rounded-none'
+          : 'hidden'
+      } rounded-xl bg-white p-6 shadow-xl sm:p-8 lg:sticky lg:top-8 lg:block lg:h-fit lg:w-auto lg:max-w-none lg:overflow-visible lg:rounded-xl lg:shadow-sm`}
+    >
+      <div className="mb-6 flex items-center justify-between lg:mb-0">
+        <h2 id="cart-title" className="text-2xl font-bold text-red-600">
+          Your Cart ({totalQuantity})
+        </h2>
+        <button
+          ref={closeButtonRef}
+          type="button"
+          onClick={onClose}
+          aria-label="Cerrar carrito"
+          className="rounded-full border border-rose-300 px-3 py-1 text-rose-900 hover:bg-rose-50 lg:hidden"
+        >
+          &times;
+        </button>
+      </div>
 
       {items.length === 0 ? (
         <div className="flex min-h-56 flex-col items-center justify-center py-8 text-center">

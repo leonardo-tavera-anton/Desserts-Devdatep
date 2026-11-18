@@ -225,7 +225,7 @@ esto obvio con un post, enviando los datos del ProductForm devolviendo response.
 
 antes de seguir con PUT Y DELETE primero con create
 
-3:03 am
+3:03
 ahora ya conociendo el metodo para create agrego el put y delete asincronos
 toca implementar las mutaciones q pide la prueba
 
@@ -254,11 +254,47 @@ en header importo e ingreso un link to hacia admin/productos y dentro del mismo 
 CRUD Completo-----
 
 PAGINACION Y CATEGORIAS
-se agrego paginacion desde json-server usando _page y _per_page=8.
+ya quedo la paginacion desde json-server usando _page y _per_page=8.
 y la busqueda por nombre y categoria se aplican en la API antes de paginar
 se creo el endpoint GET /categories y el filtro de categoria ahora lee sus datos
 las categorias se muestran como badges en las tarjetas de productos
 se comprobo la primera pagina con 8 productos y la segunda con los 2 restantes
 
+4:30
+flujo como funciona
+1.inicia homepage (maximo 8 productos)
+2.useProduct conecta la pantalla con la consutlta 
+3.productQueries crea la clave cache d bsuqueda y si cambia d pagina tanstack ejecuta otra solicitud
+4.productService pasa los parametros nombre, categoria _page y per_page al API
+5.api.ts configura internamente axios para llamar a json server, esto incluye todo lo mencionado
+osea en product.ts termina todos los datos q se solicitaron dsd antes
+6.finalmente jala la info del json y se envia al homepage para mostrar segun el caso si exsite si hay mas d una pagina
+
+TOAST
+primero la opcion CRUD en ProductForm( aqui se valida)
+ProductManagementPage elige la mutacion inicia la vista y los posibles casos
+esto ejecuta a useProductMutations invalidando la cache y llamando a productService
+en base a eso se muestra onError .... onSuccess
+se asigna valor
+se renderiza toast.tsx sin llamar al api (message)
+
+´*en resumen
+ProductForm
+ProductManagementPage
+useProductMutations
+productService
+bifurcacion ----- succes o error
+se renderiza al final
+
+DRAWER 
+ahora si en escritorio el carrito sigue visible como columna y en app movil se abre con
+el boton y se puede cerrar con la x
+
+en HomePage se encarga d mostrar y la condicion de oscurecer el fondo
+cartStore mantiene la constancia de los productos y cantidades y home el totalmente
+CartDrawer maneja quitar o confirmar productos
+ConfirmOrderModal al confirmar se cierra el drawer 
+
+NOTIFICACIONES
 
 

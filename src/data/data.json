@@ -111,7 +111,7 @@
     {
       "name": "Hola Prueba",
       "category": "Prueba",
-      "price": 20,
+      "price": 21,
       "image": {
         "thumbnail": "/assets/images/image-meringue-thumbnail.jpg",
         "mobile": "/assets/images/image-meringue-mobile.jpg",
@@ -119,19 +119,61 @@
         "desktop": "/assets/images/image-meringue-desktop.jpg"
       },
       "id": "BGkMWOenztg"
+    },
+    {
+      "name": "Adios",
+      "category": "no se",
+      "price": 1,
+      "image": {
+        "thumbnail": "/assets/images/image-cake-thumbnail.jpg",
+        "mobile": "/assets/images/image-cake-mobile.jpg",
+        "tablet": "/assets/images/image-cake-tablet.jpg",
+        "desktop": "/assets/images/image-cake-desktop.jpg"
+      },
+      "id": "E5Xk__XfAI0"
     }
   ],
   "categories": [
-    { "id": "waffle", "name": "Waffle" },
-    { "id": "creme-brulee", "name": "Crème Brûlée" },
-    { "id": "macaron", "name": "Macaron" },
-    { "id": "tiramisu", "name": "Tiramisu" },
-    { "id": "baklava", "name": "Baklava" },
-    { "id": "pie", "name": "Pie" },
-    { "id": "cake", "name": "Cake" },
-    { "id": "brownie", "name": "Brownie" },
-    { "id": "panna-cotta", "name": "Panna Cotta" },
-    { "id": "prueba", "name": "Prueba" }
+    {
+      "id": "waffle",
+      "name": "Waffle"
+    },
+    {
+      "id": "creme-brulee",
+      "name": "Crème Brûlée"
+    },
+    {
+      "id": "macaron",
+      "name": "Macaron"
+    },
+    {
+      "id": "tiramisu",
+      "name": "Tiramisu"
+    },
+    {
+      "id": "baklava",
+      "name": "Baklava"
+    },
+    {
+      "id": "pie",
+      "name": "Pie"
+    },
+    {
+      "id": "cake",
+      "name": "Cake"
+    },
+    {
+      "id": "brownie",
+      "name": "Brownie"
+    },
+    {
+      "id": "panna-cotta",
+      "name": "Panna Cotta"
+    },
+    {
+      "id": "prueba",
+      "name": "Prueba"
+    }
   ],
   "$schema": "./node_modules/json-server/schema.json"
 }

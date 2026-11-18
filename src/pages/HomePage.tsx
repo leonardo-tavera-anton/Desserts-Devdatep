@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { usePaginatedProducts } from '../hooks/useProducts';
 import { useCategories } from '../hooks/useCategories';
 import { ProductSkeleton } from '../components/ProductSkeleton';
@@ -13,6 +13,8 @@ export function HomePage() {
   const [page, setPage] = useState(1);
   const perPage = 8;
   const [category, setCategory] = useState('');
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const cartButtonRef = useRef<HTMLButtonElement>(null);
   const items = useCartStore((state) => state.items); //llamamos al estado del carrito
   const clearCart = useCartStore((state) => state.clearCart); //en linea 29
 
@@ -44,6 +46,25 @@ export function HomePage() {
     (sum, item) => sum + item.product.price * item.quantity,
     0
   );
+
+  useEffect(() => {
+    if (!isCartOpen) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsCartOpen(false);
+        cartButtonRef.current?.focus();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isCartOpen]);
+
+  const closeCart = () => {
+    setIsCartOpen(false);
+    cartButtonRef.current?.focus();
+  };
  
   //metodo nueva orden
   const startNewOrder = () => {
@@ -95,6 +116,17 @@ export function HomePage() {
           </label>
         </div>
 
+        <button
+          ref={cartButtonRef}
+          type="button"
+          aria-controls="cart-drawer"
+          aria-expanded={isCartOpen}
+          onClick={() => setIsCartOpen(true)}
+          className="mb-6 inline-flex items-center gap-2 rounded-full bg-red-600 px-5 py-3 font-semibold text-white hover:bg-red-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-700 lg:hidden"
+        >
+          Ver carrito ({totalQuantity})
+        </button>
+
         <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(320px,1fr)]">
           <section aria-label="Dessert selection">
             <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -121,7 +153,7 @@ export function HomePage() {
                 ))
               )}
             </div>
-            {!isLoading && !isError && productPage && productPage.pages > 1 && (
+            {!isLoading && !isError && productPage && productPage.pages > 1 && ( //manejo d errores y paginacion
               <nav
                 aria-label="Paginacion de productos"
                 className="mt-8 flex items-center justify-center gap-4"
@@ -149,12 +181,26 @@ export function HomePage() {
             )}
           </section>
 
+          {isCartOpen && (
+            <button
+              type="button"
+              aria-label="Cerrar carrito"
+              onClick={closeCart}
+              className="fixed inset-0 z-40 bg-black/50 lg:hidden"
+            />
+          )}
+
           <CartDrawer
             items={cartItems}
             totalQuantity={totalQuantity}
             orderTotal={orderTotal}
+            isOpen={isCartOpen}
+            onClose={closeCart}
             onRemoveItem={removeItem}
-            onConfirmOrder={() => setIsConfirmationOpen(true)}
+            onConfirmOrder={() => {
+              setIsCartOpen(false);
+              setIsConfirmationOpen(true);
+            }}
           />
         </div>
       </div>
